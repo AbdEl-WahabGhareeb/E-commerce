@@ -2,13 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function LoginPage() {
     const [errorMessage] = useState(null);
-    const router = useRouter();
 
     interface inputs {
         email: string;
@@ -22,16 +20,13 @@ export default function LoginPage() {
     } = useForm<inputs>();
 
     async function onSubmit(values: inputs) {
-
         try {
-
-
-await signIn("credentials",{
-     email: values?.email,
+            await signIn("credentials", {
+                email: values?.email,
                 password: values?.password,
-                redirect: false,
-                callbackUrl:"/"
-})
+                redirect: true,
+                callbackUrl: "/",
+            });
 
             // const response = await signIn("credentials", {
             //     email: values?.email,

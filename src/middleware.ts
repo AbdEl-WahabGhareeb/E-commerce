@@ -4,15 +4,13 @@ import type { NextRequest } from "next/server";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-
-
-
-    const token = await getToken({req:request,secret:process.env.NEXTAUTH_SECRET})
-
-
+    const token = await getToken({
+        req: request,
+        secret: process.env.NEXTAUTH_SECRET,
+    });
 
     if (!token) {
-        return NextResponse.redirect(new URL('/login', request.url));
+        return NextResponse.redirect(new URL("/login", request.url));
     }
 
     return NextResponse.next();
@@ -20,5 +18,5 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-    matcher: ["/", "/brands", "/cart", "/category", "/products" ,"/wishlist"],
+    matcher: ["/", "/brands", "/cart", "/category", "/products", "/wishlist"],
 };
