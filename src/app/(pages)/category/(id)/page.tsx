@@ -5,11 +5,7 @@ import SubCategoryDisplay from "@/components/CategoryComponent/SubCategoryDispla
 import React from "react";
 
 export default async function SubCatId({ params }: { params: { id: string } }) {
-
-    
-    const { id } = await params;
-    
-    const subCategories = await getSupCategories(id);
+    const subCategories = await getSupCategories(params.id);
     
 
 

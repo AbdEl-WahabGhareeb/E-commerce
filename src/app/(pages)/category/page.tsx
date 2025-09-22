@@ -1,19 +1,9 @@
-import {
-    getCategories,
-    getSupCategories,
-} from "@/app/serveractions/categories.action";
+import { getCategories } from "@/app/serveractions/categories.action";
 import CategoryDisplay from "@/components/CategoryComponent/CategoryDisplay";
 import React from "react";
 
-export default async function Category(id: string) {
+export default async function Category() {
     const categories = await getCategories();
-    console.log(categories);
-
-    const subCategory = await getSupCategories(id);
-    console.log(subCategory, " sub cat from caaaaaaaaaaaat");
-    console.log(id, "id from categooor");
-    
-
     return (
         <>
             <div className="container  mx-auto">

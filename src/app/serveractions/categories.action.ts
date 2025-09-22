@@ -34,7 +34,7 @@ async function getSupCategories(id: string) {
         
 
         return {
-            // data: response?.data?.data,
+            data: response?.data?.data,
             status: response?.status,
             message: response?.data?.message,
         };
