@@ -18,8 +18,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 export default function CheckOut() {
     interface inputs {
         details: string;
-        city: string;
         phone: string;
+        city: string;
     }
     const [isLoading, setIsLoading] = useState(false);
     const [paymentMethod, setPaymentMethod] = useState<
@@ -43,7 +43,7 @@ export default function CheckOut() {
         if (paymentMethod == "cash") {
             try {
                 setIsLoading(true);
-                const response = await getCashPayment(cartId as string, values);
+                const response = await getCashPayment(cartId as string, { shippingAddress: values });
                 console.log(response);
                 if (response?.data?.status === "success") {
                     setCartDetails(null);
@@ -59,7 +59,7 @@ export default function CheckOut() {
                 setIsLoading(true);
                 const response = await getOnlinePayment(
                     cartId as string,
-                    values
+                    { shippingAddress: values }
                 );
                 console.log(response);
                 if (response?.data?.status === "success") {
