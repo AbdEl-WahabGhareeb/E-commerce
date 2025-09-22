@@ -1,4 +1,4 @@
-export interface Review {}
+export type Review = Record<string, unknown>;
 export interface Brand {
     _id: string;
     name: string;

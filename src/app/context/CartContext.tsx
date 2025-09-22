@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { clearUserCart, getUserCart } from "../serveractions/cart.action";
 import { CartData } from "../types/cart.model";
 
@@ -6,37 +6,36 @@ interface CartContextType {
     cartDetails: CartData | null;
     getCartDetails: () => Promise<void>;
     clearTheCart: () => Promise<void>;
-    setCartDetails:(cart : CartData | null) => void
+    setCartDetails: React.Dispatch<React.SetStateAction<CartData | null>>;
 }
 
 const CartContext = createContext<CartContextType>({
     cartDetails: null,
     getCartDetails: async () => {},
     clearTheCart: async () => {},
-    setCartDetails:()=>{}
+    setCartDetails: () => {}
 });
+
 export default function CartContextProvider({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    const [cartDetails, setCartDetails] = useState(null);
+    const [cartDetails, setCartDetails] = useState<CartData | null>(null);
 
-    async function getCartDetails() {
+    const getCartDetails = useCallback(async () => {
         const response = await getUserCart();
         setCartDetails(response?.data);
-        console.log(cartDetails, "cart details from cart context");
-    }
+    }, []);
 
     async function clearTheCart() {
         const response = await clearUserCart();
         setCartDetails(response?.data);
-
     }   
 
     useEffect(() => {
         getCartDetails();
-    }, []);
+    }, [getCartDetails]);
 
 
 

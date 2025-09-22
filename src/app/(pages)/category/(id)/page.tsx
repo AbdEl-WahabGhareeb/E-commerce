@@ -17,7 +17,6 @@ export default async function SubCatId({ params }: { params: { id: string } }) {
         <div className="container mx-auto mt-20">
             <SubCategoryDisplay
                 subcategories={subCategories?.data}
-                category={subCategories?.data || []}
             />
         </div>
     );

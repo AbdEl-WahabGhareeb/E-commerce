@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import { ShoppingCart, Heart, Menu as MenuIcon, X } from "lucide-react";
+import { ShoppingCart, Menu as MenuIcon, X } from "lucide-react";
 import {
     NavigationMenu,
     NavigationMenuItem,

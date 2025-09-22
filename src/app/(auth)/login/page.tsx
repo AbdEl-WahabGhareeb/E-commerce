@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function LoginPage() {
-    const [errorMessage, setErrorMessage] = useState(null);
+    const [errorMessage] = useState(null);
     const router = useRouter();
 
     interface inputs {

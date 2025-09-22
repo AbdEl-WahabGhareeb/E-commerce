@@ -3,7 +3,6 @@ import {
     getSupCategories,
 } from "@/app/serveractions/categories.action";
 import CategoryDisplay from "@/components/CategoryComponent/CategoryDisplay";
-import SubCategoryDisplay from "@/components/CategoryComponent/SubCategoryDisplay"; 
 import React from "react";
 
 export default async function Category(id: string) {

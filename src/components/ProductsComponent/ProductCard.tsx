@@ -104,7 +104,8 @@ export default function ProductCard({ product }: { product: Products }) {
                         </button>
                         <button
                             onClick={() => handleAddToWishList(product?._id)}
-                            className="cursor-pointer p-2  "
+                            className="cursor-pointer p-2"
+                            aria-label="Add to wishlist"
                         >
                             <Heart className=" text-2xl fill-black transition-all" />
                         </button>

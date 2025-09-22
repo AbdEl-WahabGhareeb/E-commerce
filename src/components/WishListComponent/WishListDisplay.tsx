@@ -28,7 +28,7 @@ export default function WishListDisplay() {
     async function handleDeleteItemFromWishList(productId: string) {
         setIsLoading(true);
         const removeItem = await removeFromWishList(productId);
-        toast.success("Item Successfuly Removed");
+        toast.success(removeItem?.message || "Item Successfully Removed");
         await getWishListDetails();
         setIsLoading(false);
     }
@@ -40,7 +40,7 @@ export default function WishListDisplay() {
             ) : (
                 <div className="container mx-auto p-10 bg-gray-100">
                     <p className="text-4xl font-semibold mb-7">My wish list</p>
-                    {wishListDetails?.data?.map((product) => (
+                    {wishListDetails?.data?.products?.map((product) => (
                         <div key={product?._id}>
                             <div className="flex justify-between items-center mb-5">
                                 <div className="left flex w-3/4 items-center gap-6">
@@ -49,14 +49,14 @@ export default function WishListDisplay() {
                                             className="object-contain"
                                             sizes="(max-width: 768px) 100vw (max-width: 1200px) 50vw , 25vw"
                                             fill
-                                            src={product?.imageCover}
-                                            alt=""
+                                            src={product?.product?.imageCover}
+                                            alt={product?.product?.title || ""}
                                         />
                                     </div>
                                     <div className="titles">
                                         <p className="font-semibold text-2xl ">
                                             {" "}
-                                            {product?.title}
+                                            {product?.product?.title}
                                         </p>
                                         <p className="font-medium text-2xl text-green-600">
                                             {product?.price} EGP{" "}
