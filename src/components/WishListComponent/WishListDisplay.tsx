@@ -23,6 +23,7 @@ export default function WishListDisplay() {
         setIsLoading(false);
     }
 
+
     const { wishListDetails, getWishListDetails } = useWishList();
 
     async function handleDeleteItemFromWishList(productId: string) {
@@ -33,6 +34,7 @@ export default function WishListDisplay() {
         setIsLoading(false);
     }
 
+
     return (
         <>
             {isLoading ? (
@@ -40,8 +42,8 @@ export default function WishListDisplay() {
             ) : (
                 <div className="container mx-auto p-10 bg-gray-100">
                     <p className="text-4xl font-semibold mb-7">My wish list</p>
-                    {wishListDetails?.data?.products?.map((product) => (
-                        <div key={product?._id}>
+                    {wishListDetails?.data?.map((item) => (
+                        <div key={item?._id}>
                             <div className="flex justify-between items-center mb-5">
                                 <div className="left flex w-3/4 items-center gap-6">
                                     <div className="relative h-[200px] w-1/6">
@@ -49,22 +51,21 @@ export default function WishListDisplay() {
                                             className="object-contain"
                                             sizes="(max-width: 768px) 100vw (max-width: 1200px) 50vw , 25vw"
                                             fill
-                                            src={product?.product?.imageCover}
-                                            alt={product?.product?.title || ""}
+                                            src={item?.imageCover}
+                                            alt={item?.title || ""}
                                         />
                                     </div>
                                     <div className="titles">
                                         <p className="font-semibold text-2xl ">
-                                            {" "}
-                                            {product?.product?.title}
+                                            {item?.title}
                                         </p>
                                         <p className="font-medium text-2xl text-green-600">
-                                            {product?.price} EGP{" "}
+                                            {item?.price} EGP{" "}
                                         </p>
                                         <p
                                             onClick={() =>
                                                 handleDeleteItemFromWishList(
-                                                    product?._id
+                                                    item?._id
                                                 )
                                             }
                                             className="text-[18px] text-red-600 flex items-center gap-0.5 cursor-pointer"
@@ -76,7 +77,7 @@ export default function WishListDisplay() {
                                 </div>
                                 <Button
                                     onClick={() =>
-                                        handleAddToCart(product?._id)
+                                        handleAddToCart(item?._id)
                                     }
                                     variant={"outline"}
                                     className="border-green-600 px-5 py-5 cursor-pointer"

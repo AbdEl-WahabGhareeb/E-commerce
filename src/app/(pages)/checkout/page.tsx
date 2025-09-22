@@ -32,12 +32,10 @@ export default function CheckOut() {
         handleSubmit,
     } = useForm<inputs>();
 
-    // const [errorMessage, setErrorMessage] = useState(null);
     const router = useRouter();
     const { cartDetails, setCartDetails } = useCart();
     const cartId = cartDetails?.cartId;
-    // console.log(cartId);
-    // console.log(cartDetails, "cart from check out");
+
 
     async function onSubmit(values: inputs) {
         if (paymentMethod == "cash") {
@@ -64,9 +62,6 @@ export default function CheckOut() {
                 console.log(response);
                 if (response?.data?.status === "success") {
                     window.location.href = response.data.session.url
-                    // setCartDetails(null);
-                    // router.push(`/`);
-                    // setIsLoading(false);
                     console.log(response?.data ,"online payment response");
                 }
             } catch (error) {

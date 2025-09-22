@@ -16,15 +16,12 @@ import Link from "next/link";
 
 export default function CartDisplay() {
     const { cartDetails, getCartDetails, clearTheCart } = useCart();
-    console.log(cartDetails?.data, "cartttttttttt details");
-    console.log(cartDetails, "cartttttttttt details");
 
     const [isLoading, setIsLoading] = useState(false);
 
     async function handleDeleteItem(productId: string) {
         setIsLoading(true);
         const removeFromCart = await removeItem(productId);
-        console.log(removeFromCart);
         toast.success("Item Successfuly Removed");
         await getCartDetails();
         setIsLoading(false);
@@ -33,7 +30,6 @@ export default function CartDisplay() {
     async function handleClearCart() {
         setIsLoading(true);
         const clearCart = await clearUserCart();
-        console.log(clearCart);
         toast.success("Cart is empty now");
         await clearTheCart();
         setIsLoading(false);
@@ -42,7 +38,6 @@ export default function CartDisplay() {
     async function handleUpdateQuantity(productId: string, count: number) {
         setIsLoading(true);
         const updateCount = await updateQuantity(productId, count);
-        console.log(updateCount);
         toast.success("Quantity Updated Successfuly");
         await getCartDetails();
 

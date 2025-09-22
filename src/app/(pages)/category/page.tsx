@@ -11,9 +11,7 @@ export default async function Category() {
                     <CategoryDisplay category={categories?.data} />
                     
                 </div>
-                {/* <div className="mt-5">
-                        <SubCategoryDisplay subcategories={subCategory?.data} category={categories?.data} />
-                    </div> */}
+       
             </div>
         </>
     );

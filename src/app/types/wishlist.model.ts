@@ -29,25 +29,11 @@ interface ProductInWishList {
     brand: Brand;
     category: Category;
     subcategory: Subcategory[];
-}
-
-interface WishListItem {
-    count: number;
-    _id: string;
-    product: ProductInWishList;
-    price: number;
+    price: number
 }
 
 export interface WishListData {
-    cartId: string;
-    data: {
-        cartOwner: string;
-        products: WishListItem[];
-        totalCartPrice: number;
-        createdAt: string;
-        updatedAt: string;
-        __v: number;
-        _id: string;
-    };
-    numOfCartItems: number;
+    status: string;
+    count: number;
+    data: ProductInWishList[];
 }
