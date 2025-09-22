@@ -24,15 +24,23 @@ export default function LoginPage() {
     async function onSubmit(values: inputs) {
 
         try {
-            const response = await signIn("credentials", {
-                email: values?.email,
+
+
+await signIn("credentials",{
+     email: values?.email,
                 password: values?.password,
                 redirect: false,
-            });
-            if(response?.ok){
-                router.push("/")
-            }
-            console.log(response, "login response");
+                callbackUrl:"/"
+})
+
+            // const response = await signIn("credentials", {
+            //     email: values?.email,
+            //     password: values?.password,
+            //     redirect: false,
+            // });
+            // if(response?.ok){
+            //     router.push("/")
+            // }
         } catch (error) {
             console.log(error, "login error");
         }
