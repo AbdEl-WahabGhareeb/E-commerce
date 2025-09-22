@@ -22,12 +22,11 @@ export default function LoginPage() {
     } = useForm<inputs>();
 
     async function onSubmit(values: inputs) {
-        console.log(values, "sign up data");
 
         try {
             const response = await signIn("credentials", {
-                email: values.email,
-                password: values.password,
+                email: values?.email,
+                password: values?.password,
                 redirect: false,
             });
             if(response?.ok){
