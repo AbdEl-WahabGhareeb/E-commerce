@@ -35,7 +35,7 @@ export default function CartContextProvider({
 
     useEffect(() => {
         getCartDetails();
-    }, [getCartDetails]);
+    },);
 
 
 
