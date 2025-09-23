@@ -27,6 +27,9 @@ export default function CartDisplay() {
         setIsLoading(false);
     }
 
+    console.log(cartDetails);
+    
+
     async function handleClearCart() {
         setIsLoading(true);
         const clearCart = await clearUserCart();
