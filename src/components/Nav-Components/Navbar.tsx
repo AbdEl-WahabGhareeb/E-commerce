@@ -16,6 +16,8 @@ export default function Navbar() {
     const { cartDetails } = useCart();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    console.log(session);
+
     return (
         <>
             <div className="bg-gray-200 fixed z-50 top-0 left-0 right-0">
