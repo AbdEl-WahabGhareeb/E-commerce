@@ -28,7 +28,7 @@ export default function Navbar() {
                         </NavigationMenuItem>
                     </NavigationMenuList>
 
-                    <div className="invisible md:visible justify-between flex-grow">
+                    <div className="invisible relative md:visible justify-between flex-grow">
                         {session?.data ? (
                             <>
                                 <NavigationMenuList className="gap-5 items-center">
@@ -101,7 +101,7 @@ export default function Navbar() {
 
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:invissible vissible p-2 focus:outline-none"
+                        className="md:invissible absolute right-0 p-2 focus:outline-none"
                     >
                         {isMobileMenuOpen ? (
                             <X className="h-6 w-6" />
