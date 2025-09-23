@@ -55,7 +55,7 @@ export default function Navbar() {
                         ) : null}
                     </div>
 
-                    <NavigationMenuList className="gap-2">
+                    <NavigationMenuList className="gap-2 invisible md:visible">
                         {session?.data ? (
                             <>
                                 <NavigationMenuItem>
