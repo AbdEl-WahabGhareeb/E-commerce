@@ -32,7 +32,7 @@ export default function ProductDetailsComp({
 
     return (
         <>
-            <div className="flex justify-between gap-8 md:flex-col items-center mt-10">
+            <div className="flex justify-between gap-8 flex-col md:flex-row items-center mt-10">
                 <div className="w-full md:w-1/2">
                     <Swiper
                         slidesPerView={1}
