@@ -31,6 +31,9 @@ export default function LoginPage() {
                 callbackUrl: "/",
             });
 
+
+                console.log(values , "values from logi page")
+
             // const response = await signIn("credentials", {
             //     email: values?.email,
             //     password: values?.password,
