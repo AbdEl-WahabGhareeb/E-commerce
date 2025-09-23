@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Card,
     CardContent,
@@ -15,12 +15,14 @@ import { addToUserCart } from "@/app/serveractions/cart.action";
 import toast from "react-hot-toast";
 import { useCart } from "@/app/context/CartContext";
 import { useWishList } from "@/app/context/WishListContext";
-import { addToWishList } from "@/app/serveractions/wishlist.action";
+import { addToWishList, removeFromWishList } from "@/app/serveractions/wishlist.action";
 import Loading from "@/app/loading";
 
 export default function ProductCard({ product }: { product: Products }) {
     const [isLoading, setIsLoading] = useState(false);
+    const [isInWishList, setIsInWishList] = useState(false);
     const { getCartDetails } = useCart();
+    const { wishListDetails } = useWishList();
     async function handleAddToCart(productId: string) {
         setIsLoading(true);
         const addToCart = await addToUserCart(productId);
@@ -32,12 +34,31 @@ export default function ProductCard({ product }: { product: Products }) {
     const { getWishListDetails } = useWishList();
     async function handleAddToWishList(productId: string) {
         setIsLoading(true);
-        const addItemToWishList = await addToWishList(productId);
-        toast.success(addItemToWishList?.message);
-        await getWishListDetails();
-        console.log(addItemToWishList?.message);
+        try {
+            if (isInWishList) {
+                const removeItem = await removeFromWishList(productId);
+                toast.success(removeItem?.message);
+                setIsInWishList(false);
+            } else {
+                const addItem = await addToWishList(productId);
+                toast.success(addItem?.message);
+                setIsInWishList(true);
+            }
+            await getWishListDetails();
+        } catch (error) {
+            toast.error("Something went wrong");
+            console.log(error)
+        }
         setIsLoading(false);
     }
+
+    useEffect(() => {
+        // Check if the current product is in the wishlist
+        const isProductInWishList = wishListDetails?.data?.some(
+            (item) => item._id === product._id
+        );
+        setIsInWishList(!!isProductInWishList);
+    }, [wishListDetails, product._id]);
     return (
         <>
             {isLoading ? (
@@ -104,10 +125,10 @@ export default function ProductCard({ product }: { product: Products }) {
                         </button>
                         <button
                             onClick={() => handleAddToWishList(product?._id)}
-                            className="cursor-pointer p-2"
+                            className="cursor-pointer p-2 "
                             aria-label="Add to wishlist"
                         >
-                            <Heart className=" text-2xl fill-black transition-all" />
+                            <Heart className={`text-2xl transition-all ${isInWishList ? 'fill-red-500 stroke-red-500' : 'fill-black stroke-black'}`} />
                         </button>
                     </CardFooter>
                 </Card>
