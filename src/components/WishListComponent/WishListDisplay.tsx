@@ -34,6 +34,9 @@ export default function WishListDisplay() {
         setIsLoading(false);
     }
 
+    console.log(wishListDetails);
+    
+
 
     return (
         <>
