@@ -55,7 +55,7 @@ export default function Navbar() {
                         ) : null}
                     </div>
 
-                    <NavigationMenuList className="gap-2 invisible sm:visible ">
+                    <NavigationMenuList className="gap-2 invisible">
                         {session?.data ? (
                             <>
                                 <NavigationMenuItem>
@@ -101,7 +101,7 @@ export default function Navbar() {
 
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden p-2 focus:outline-none"
+                        className="md:invissible vissible p-2 focus:outline-none"
                     >
                         {isMobileMenuOpen ? (
                             <X className="h-6 w-6" />
