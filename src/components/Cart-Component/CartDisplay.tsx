@@ -25,6 +25,8 @@ export default function CartDisplay() {
         toast.success("Item Successfuly Removed");
         await getCartDetails();
         setIsLoading(false);
+        console.log(removeFromCart);
+
     }
 
     console.log(cartDetails);
@@ -36,6 +38,8 @@ export default function CartDisplay() {
         toast.success("Cart is empty now");
         await clearTheCart();
         setIsLoading(false);
+        console.log(clearCart);
+
     }
 
     async function handleUpdateQuantity(productId: string, count: number) {
@@ -43,6 +47,7 @@ export default function CartDisplay() {
         const updateCount = await updateQuantity(productId, count);
         toast.success("Quantity Updated Successfuly");
         await getCartDetails();
+console.log(updateCount);
 
         setIsLoading(false);
     }
