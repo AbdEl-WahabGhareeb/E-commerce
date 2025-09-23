@@ -7,10 +7,10 @@ export const options: NextAuthOptions = {
             name: "Credentials",
             credentials: {
                 email: {
-                    label: "Email",
+                    label: "email",
                     type: "email",
                 },
-                password: { label: "Password", type: "password" },
+                password: { label: "password", type: "password" },
             },
             async authorize(credentials) {
                 const res = await fetch(
