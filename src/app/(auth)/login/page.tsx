@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -14,7 +14,7 @@ export default function LoginPage() {
         password: string;
     }
 
-    const router = useRouter();
+    // const router = useRouter();
 
     const {
         formState: { errors },
@@ -24,21 +24,21 @@ export default function LoginPage() {
 
     async function onSubmit(values: inputs) {
         try {
-            // await signIn("credentials", {
-            //     email: values?.email,
-            //     password: values?.password,
-            //     redirect: true,
-            //     callbackUrl: "/",
-            // });
-
-            const response = await signIn("credentials", {
+            await signIn("credentials", {
                 email: values?.email,
                 password: values?.password,
-                redirect: false,
+                redirect: true,
+                callbackUrl: "/",
             });
-            if (response?.ok) {
-                router.push("/");
-            }
+
+            // const response = await signIn("credentials", {
+            //     email: values?.email,
+            //     password: values?.password,
+            //     redirect: false,
+            // });
+            // if (response?.ok) {
+            //     router.push("/");
+            // }
         } catch (error) {
             console.log(error, "login error");
         }
