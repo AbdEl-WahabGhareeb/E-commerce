@@ -101,7 +101,7 @@ export default function Navbar() {
 
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden visible p-2 focus:outline-none"
+                        className="md:hidden p-2 focus:outline-none"
                     >
                         {isMobileMenuOpen ? (
                             <X className="h-6 w-6" />
@@ -111,7 +111,7 @@ export default function Navbar() {
                     </button>
 
                     {isMobileMenuOpen && (
-                        <div className="md:hidden absolute top-full left-0 right-0 bg-gray-200 py-2 px-4 shadow-lg">
+                        <div className="md:hidden vissible absolute top-full left-0 right-0 bg-gray-200 py-2 px-4 shadow-lg">
                             {session?.data ? (
                                 <div className="flex flex-col gap-4">
                                     <Link
