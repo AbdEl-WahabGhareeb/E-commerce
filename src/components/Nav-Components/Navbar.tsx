@@ -101,7 +101,7 @@ export default function Navbar() {
 
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:invisible md:static sm:absolute right-0 p-2 focus:outline-none"
+                        className="md:invisible absolute right-0 p-2 focus:outline-none"
                     >
                         {isMobileMenuOpen ? (
                             <X className="h-6 w-6" />
