@@ -19,7 +19,7 @@ export async function getUserToken() {
 
     const token = decodeToken?.token;
 
-console.log(t);
+console.log(token);
 
 
     return token;
