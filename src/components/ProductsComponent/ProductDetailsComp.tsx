@@ -61,7 +61,7 @@ export default function ProductDetailsComp({
                         ))}
                     </Swiper>
                 </div>
-                <div className="w-full md:w-1/2 ">
+                <div className="w-full md:w-1/2 px-12">
                     <h2 className="text-2xl font-bold mb-3">
                         {productDetails?.title}
                     </h2>
